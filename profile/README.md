@@ -48,16 +48,6 @@ Each repository ships its own `README.md`, `Dockerfile`, and `docker-compose.yml
 - R ≥ 4.1 (for local development of R-based soft sensors)
 - ≥ 8 GB RAM recommended
 
-### Quick start (Docker)
-
-Clone this umbrella repository and bring up all five components plus the Node-RED emulator:
-
-```bash
-git clone https://github.com/stamm-4m/stamm.git
-cd stamm
-docker compose up -d
-```
-
 Once the stack is healthy, the services are available at:
 
 | Service | URL |
@@ -67,12 +57,6 @@ Once the stack is healthy, the services are available at:
 | Airflow UI | `http://localhost:8080` |
 | InfluxDB UI | `http://localhost:8086` |
 | Node-RED emulator | `http://localhost:1880` |
-
-To shut everything down:
-
-```bash
-docker compose down
-```
 
 ### Component-only installation
 
