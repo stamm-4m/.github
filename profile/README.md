@@ -5,7 +5,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Documentation](https://img.shields.io/badge/docs-stamm.inrae.fr-green)](https://stamm.inrae.fr)
 
-STAMM is an open-source MLOps framework dedicated to the deployment, monitoring, and maintenance of machine-learning soft sensors in industrial environments. Unlike general-purpose MLOps platforms (MLflow, Kubeflow, Metaflow, ClearML), which assume single-language pipelines monitored through near-synchronous prediction error, STAMM is purpose-built for the regime in which industrial soft sensors actually operate: ground-truth labels arrive offline hours or days after the prediction, processes show slow non-stationary dynamics, and model code is written across heterogeneous languages.
+STAMM is an open-source MLOps framework dedicated to the deployment, monitoring, and maintenance of machine-learning soft sensors in industrial environments. Unlike general-purpose MLOps platforms, which assume single-language pipelines monitored through near-synchronous prediction error, STAMM is purpose-built for the regime in which industrial soft sensors actually operate: ground-truth labels arrive offline hours or days after the prediction, processes show slow non-stationary dynamics, and model code is written across heterogeneous languages.
 
 Although developed and validated in the context of an industrial-scale fed-batch fermentation, the framework is **domain-agnostic** and applies to a wide range of industrial contexts including chemical production, environmental monitoring, and other data-intensive processes.
 
@@ -84,19 +84,17 @@ Each component repository can also be deployed independently. See the per-reposi
 
 A full walk-through with screenshots is available in the [STAMM documentation](https://stamm.inrae.fr). The typical workflow is:
 
-1. **Stream raw measurements** into the time-series database (`stamm_raw` bucket) — either through native REST hooks of the equipment, through MQTT applications such as [LEAF](https://leaf-framework.org/), or, for the demo, through the Node-RED emulator that replays IndPenSim batches.
+1. **Stream raw measurements** into the time-series database (`stamm_raw` bucket) — either through native REST hooks of the equipment, through MQTT applications or more advanced frameworks such as [LEAF](https://leaf-framework.org/), or, for the demo, through the Node-RED emulator that replays IndPenSim batches.
 2. **Register a soft sensor** in the model registry by uploading the model artefact (any supported format) together with its YAML metadata file.
 3. **Schedule inference** through the Airflow `deployment_soft_sensors` DAG, which discovers registered soft sensors, calls `/predict`, and writes predictions into the `stamm_predictions` bucket.
 4. **Monitor drift** through the dashboard's *Monitoring* view, which shows training-vs-live density comparisons per input variable and pairwise model-divergence plots.
 5. **Annotate anomalies and approve retraining** through the dashboard's *Simulation Assessment* view; labels are persisted to the `stamm_metadata` bucket and feed back into the maintenance pipeline.
 
-A demonstration notebook walks through all five steps using the IndPenSim penicillin fermentation benchmark; see the [Node-RED demo documentation](https://stamm.inrae.fr/docs/demo/node_RED.html).
-
 ---
 
 ## Citation
 
-If you use STAMM in your research, please cite the SoftwareX paper:
+If you use STAMM in your research, please cite the  paper:
 
 ```bibtex
 @article{corrales2026stamm,
@@ -140,11 +138,6 @@ STAMM is released under the **Apache License 2.0**. See [`LICENSE.txt`](./LICENS
 
 ---
 
-## Contributing
-
-Contributions are welcome. New drift detectors can be added as modules under `drift_detectors.univariate` or `drift_detectors.multivariate`; new model formats can be plugged into the model registry without modifying the framework. See the per-component READMEs for contribution guidelines, or open an issue at <https://github.com/stamm-4m> for discussion.
-
----
 
 ## Contact
 
