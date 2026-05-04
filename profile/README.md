@@ -90,7 +90,7 @@ If you use STAMM in your research, please cite the  paper:
 }
 ```
 
-The four interpretable soft sensors deployed in the IndPenSim case study are described in:
+The ML soft sensors deployed in the IndPenSim case study are described in:
 
 ```bibtex
 @article{metcalfe2025mlops,
