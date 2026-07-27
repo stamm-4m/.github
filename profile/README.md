@@ -81,12 +81,18 @@ A full walk-through with screenshots is available in the [STAMM documentation](h
 If you use STAMM in your research, please cite the  paper:
 
 ```bibtex
-@article{corrales2026stamm,
-  title   = {STAMM: Soft sensor moniToring and mAintenance framework for Machine learning Models},
-  author  = {Suarez, Carlos and Astudillo, Alexander and Metcalfe, Brett and Crowther, Matthew and Koehorst, Jasper J. and Castillo, Esteban and Bize, Ariane and Corrales, David Camilo},
-  journal = {SoftwareX},
-  year    = {2026},
-  note    = {Submitted}
+@article{SUAREZ2026102783,
+title = {STAMM: Soft sensor moniToring and mAintenance framework for Machine learning Models},
+journal = {SoftwareX},
+volume = {35},
+pages = {102783},
+year = {2026},
+issn = {2352-7110},
+doi = {https://doi.org/10.1016/j.softx.2026.102783},
+url = {https://www.sciencedirect.com/science/article/pii/S235271102600275X},
+author = {Carlos Suarez and Alexander Astudillo and Brett Metcalfe and Matthew Crowther and Jasper J. Koehorst and Esteban Castillo and Ariane Bize and David Camilo Corrales},
+keywords = {Machine learning operations (MLOps);Soft sensors;Drift detection;Digital twins;Industry 4.0;Bioprocess monitoring},
+abstract = {STAMM (Soft sensor moniToring and mAintenance framework for Machine learning Models) is an open-source MLOps framework for industrial machine-learning soft sensors. Unlike general-purpose MLOps platforms (MLflow, Kubeflow, Metaflow, ClearML), STAMM targets the regime where ground-truth labels arrive offline hours or days late, processes exhibit slow non-stationary dynamics, and models are multi-language. The framework comprises five loosely coupled components: a time-series database, workflow orchestrator, language-agnostic REST model registry, dashboard with human-in-the-loop labelling, and an extensible drift-detection package. STAMM was validated on an industrial-scale fed-batch penicillin fermentation (IndPenSim) with seven coexisting R and Python soft sensors served through the model registry.}
 }
 ```
 
