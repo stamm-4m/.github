@@ -24,20 +24,25 @@ Although developed and validated in the context of an industrial-scale fed-batch
 
 ## Architecture
 
-STAMM is organised around five loosely coupled components connected by three pipelines (data ingestion, real-time inference, and maintenance with human-in-the-loop corrections).
+STAMM is organised around four loosely coupled components connected by three pipelines: **data ingestion, real-time inference, and maintenance with human-in-the-loop corrections**.
 
 | # | Component | Repository |
 |---|-----------|------------|
-| I | Time-series database (InfluxDB 2.7) + relational backbone (PostgreSQL/TimescaleDB) | [`data-backbone`](https://github.com/stamm-4m/data-backbone) |
-| II | Workflow orchestrator (Apache Airflow 3.0.6) | [`workflow-orchestrator`](https://github.com/stamm-4m/workflow-orchestrator) |
-| III | Language-agnostic model registry (FastAPI) | [`model-registry`](https://github.com/stamm-4m/model-registry) |
-| IV | Dashboard (Plotly-Dash) | [`dashboard`](https://github.com/stamm-4m/dashboard) |
-| V | Drift detectors (Python package) | [`drift_detectors_pack`](https://github.com/stamm-4m/drift_detectors_pack) |
-| – | Node-RED bioreactor emulator (for the IndPenSim demo) | [`Node-RED-emulator`](https://github.com/stamm-4m/Node-RED-emulator) |
+| I | Workflow orchestrator (Apache Airflow 3.0.6) | [`workflow-orchestrator`](https://github.com/stamm-4m/workflow-orchestrator) |
+| II | Model registry | [`model-registry`](https://github.com/stamm-4m/model-registry) |
+| III | Dashboard (Plotly-Dash) | [`dashboard`](https://github.com/stamm-4m/dashboard) |
+| IV | Drift detectors (Python package) | [`drift_detectors_pack`](https://github.com/stamm-4m/drift_detectors_pack) |
 
-Each repository ships its own `README.md`, `Dockerfile`, and `docker-compose.yml`.
+Each repository ships its own `README.md`, `Dockerfile`, and, where applicable, `docker-compose.yml`.
 
----
+### Supporting repositories
+
+The following repositories provide supporting infrastructure or demonstration tools but are not considered core components of the STAMM architecture.
+
+| Repository | Role |
+|---|---|
+| [`data-backbone`](https://github.com/stamm-4m/data-backbone) | Provides the database infrastructure used by the Dockerised version of the Model Registry. It contains the time-series database (InfluxDB 2.7) and relational backbone (PostgreSQL/TimescaleDB). If database access is required independently of the Model Registry, this repository should be used directly. |
+| [`Node-RED-emulator`](https://github.com/stamm-4m/Node-RED-emulator) | Standalone Node-RED bioreactor emulator used for the IndPenSim demonstration. It is independent of the core STAMM architecture. |
 
 ## Installation
 
@@ -124,7 +129,7 @@ The ML soft sensors deployed in the IndPenSim case study are described in:
 
 ## License
 
-STAMM is released under the **Apache License 2.0**. See [`LICENSE.txt`](./LICENSE.txt) for the full text.
+STAMM is released under the **Apache License 2.0**. See [`LICENSE.txt`](../LICENSE.txt) for the full text.
 
 ---
 
